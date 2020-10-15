@@ -1,12 +1,44 @@
-{
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-native",
-    "lib": ["dom", "esnext"],
-    "moduleResolution": "node",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "strict": true
-  }
-}
+ {
+   "compilerOptions": {
+     "types": ["node"],
+     "allowSyntheticDefaultImports": true,
+     "jsx": "react-native",
+     "lib": [
+       "dom",
+       "esnext",
+       "es6"
+     ],
+     "typeRoots": [
+       "./node_modules/@types",
+       "./src/typings"
+     ],
+     "esModuleInterop": true,
+     "moduleResolution": "node",
+     "noEmit": true,
+     "skipLibCheck": true,
+     "resolveJsonModule": true,
+     "strict": true,
+     "noImplicitAny": true,
+     "strictNullChecks": true,
+     "strictFunctionTypes": true,
+     "strictPropertyInitialization": true,
+     "noImplicitThis": true,
+     "alwaysStrict": true,
+     "noUnusedLocals": true,
+     "noUnusedParameters": true,
+     "noImplicitReturns": true,
+     "noFallthroughCasesInSwitch": true,
+     "forceConsistentCasingInFileNames": true,
+     "allowJs": true,
+     "baseUrl": "./",
+     "paths": {
+       "~/*": ["./src/*"]
+     }
+   },
+   "include": ["./src/**/*.ts", "./src/**/*.tsx",",./src/typings/**/*/.d.ts"],
+   "exclude": ["node_modules", "build", "dist", "src/**/*.js", "src/**/*.jsx"]
+ }
+
+
+
+

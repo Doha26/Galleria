@@ -21,14 +21,15 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+ios/Roamers.xcworkspace
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # node.js
 #
@@ -61,3 +62,12 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+
+
+#Android
+android/*.hprof
+/android/.gradle
+/android/local.properties
+huhschool.jks
+/android/app/release/
+/android/app/staging/
