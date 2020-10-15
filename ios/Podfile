@@ -2,6 +2,7 @@ platform :ios, '10.0'
 
 require_relative '../node_modules/react-native-unimodules/cocoapods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
 
 target 'Galleria' do
   rnPrefix = "../node_modules/react-native"
@@ -43,4 +44,6 @@ target 'Galleria' do
 
   # react-native-cli autolinking
   use_native_modules!
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 end
