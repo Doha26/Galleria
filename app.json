@@ -1,0 +1,17 @@
+{
+  "name": "Galleria",
+  "displayName": "Galleria",
+  "expo": {
+    "name": "Galleria",
+    "slug": "Galleria",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
