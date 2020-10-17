@@ -8,7 +8,7 @@ import {CachedImage} from '~/components/ImageCache';
 import Colors from '~/theming/colors';
 import {WIDTH} from '~/utils';
 import {IImageType} from '~/modules/Home/types/ImageType';
-import styles from '~/modules/Home/components/GalleriImage/style';
+import styles from '~/modules/Home/components/GalleryImage/style';
 import Touchable from '~/components/common/Touchable';
 
 const GalleryImageItem = ({

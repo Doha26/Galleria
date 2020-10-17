@@ -181,6 +181,7 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_cameraroll')
     implementation project(':react-native-photo-zoom')
     implementation project(':react-native-photo-view')
     implementation project(':react-native-fast-image')

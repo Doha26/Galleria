@@ -4,7 +4,7 @@ import Masonry from 'react-native-masonry-layout';
 import {View, ScrollView, Alert, NativeScrollEvent} from 'react-native';
 import PropTypes from 'prop-types';
 
-import GalleriaImageItem from '~/modules/Home/components/GalleriImage';
+import GalleriaImageItem from '~/modules/Home/components/GalleryImage';
 import Loader from '~/components/common/Loader';
 import {IImageType} from '~/modules/Home/types/ImageType';
 import {API_QUERY_TYPE} from '~/constants';
@@ -44,6 +44,7 @@ const GalleryList = ({
         return {
           url: item.download_url,
           height: randomInteger(),
+          author: item.author,
         };
       });
       dataList.current?.addItems(ImageList);

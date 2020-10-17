@@ -55,4 +55,6 @@ target 'Galleria' do
   pod 'RNFastImage', :path => '../node_modules/react-native-fast-image'
 
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
 end
