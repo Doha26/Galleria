@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {isIphoneX} from 'react-native-iphone-x-helper';
 import colors from '~/theming/colors';
-import {WIDTH} from '~/utils';
+import {HEIGHT, WIDTH} from '~/utils';
 
 const styles = StyleSheet.create({
   rootView: {
@@ -98,6 +98,13 @@ const styles = StyleSheet.create({
     margin: 0,
     justifyContent: 'flex-end',
     backgroundColor: '#f6f5f5',
+  },
+  absoluteModal:{
+    height: HEIGHT,
+    width: WIDTH,
+    backgroundColor: '#000',
+    position: 'absolute',
+    zIndex: 1000,
   },
   modalTitle: {
     fontWeight: 'bold',

@@ -1,9 +1,10 @@
 import React, {Suspense} from 'react';
 import {withNavigation} from 'react-navigation';
-import {View, Platform, ActivityIndicator} from 'react-native';
+import {View, Platform, ActivityIndicator, Image} from 'react-native';
 import PropTypes from 'prop-types';
-import {CachedImage} from '~/components/ImageCache';
 
+import FastImage from 'react-native-fast-image';
+import {CachedImage} from '~/components/ImageCache';
 import Colors from '~/theming/colors';
 import {WIDTH} from '~/utils';
 import {IImageType} from '~/modules/Home/types/ImageType';
@@ -29,20 +30,30 @@ const GalleryImageItem = ({
       <Touchable onPress={() => handleOnPress(imageItem)} style={styles.imageWrapper}>
         <Suspense
           fallback={() => (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
               <ActivityIndicator
-                color={Colors.white}
+                color={Colors.red}
                 style={{marginVertical: Platform.OS === 'ios' ? 10 : 0}}
                 size={Platform.OS === 'ios' ? 1 : 24}
               />
             </View>
           )}>
-          <CachedImage source={{uri: url}} style={styles.image} width={WIDTH / 2} height={1} />
+          <FastImage
+            source={{uri: url, priority: FastImage.priority.normal}}
+            style={[styles.image, {height, width: WIDTH / 2}]}
+            resizeMode="stretch"
+          />
         </Suspense>
       </Touchable>
     </View>
   );
-}
+};
 GalleryImageItem.propsTypes = {
   imageItem: PropTypes.shape({
     id: PropTypes.string,

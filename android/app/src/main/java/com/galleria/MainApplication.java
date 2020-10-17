@@ -6,6 +6,9 @@ import android.net.Uri;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.retizen.photozoom.PhotoZoomPackage;
+import com.reactnative.photoview.PhotoViewPackage;
+import com.dylanvann.fastimage.FastImageViewPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
