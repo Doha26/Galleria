@@ -20,7 +20,7 @@ const defaultProps = {
   onLongPress: () => null,
 };
 
-const TouchableWithPopup = ({
+const Touchable = ({
   children,
   onPress,
   onLongPress,
@@ -47,7 +47,7 @@ const TouchableWithPopup = ({
   );
 };
 
-TouchableWithPopup.propTypes = propTypes;
-TouchableWithPopup.defaultProps = defaultProps;
+Touchable.propTypes = propTypes;
+Touchable.defaultProps = defaultProps;
 
-export default TouchableWithPopup;
+export default Touchable;
