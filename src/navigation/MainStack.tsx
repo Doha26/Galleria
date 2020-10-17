@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
+import {isIphoneX} from 'react-native-iphone-x-helper';
 import HomeScreen from '~/screens/Home';
 import FavoriteScreen from '~/screens/Favorite';
 import ProfileScreen from '~/screens/Profile';
@@ -45,10 +46,11 @@ export default createBottomTabNavigator(
         borderTopRightRadius: 40,
         backgroundColor: colors.darkBlue,
         paddingTop: 30,
-        height: 70,
+        height: isIphoneX() ? 70 : 80,
       },
       tabStyle: {
         backgroundColor: colors.transparent,
+        marginBottom: !isIphoneX() ? 20 : 0,
       },
     },
     initialRouteName: 'Home',

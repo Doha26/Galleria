@@ -1,4 +1,6 @@
 rootProject.name = 'Galleria'
+include ':@react-native-community_cameraroll'
+project(':@react-native-community_cameraroll').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/cameraroll/android')
 include ':react-native-photo-zoom'
 project(':react-native-photo-zoom').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-photo-zoom/android')
 include ':react-native-photo-view'

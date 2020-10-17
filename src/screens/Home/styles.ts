@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   headerToolbar: {
-    height: 150,
+    height: isIphoneX() ? 150 : 120,
     backgroundColor: '#f64a65',
   },
   toolbarWrapper: {
@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
     width: WIDTH,
     position: 'absolute',
     top: 0,
-    paddingTop: isIphoneX() ? 60 : 20,
+    paddingTop: isIphoneX() ? 60 : 40,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
     padding: 20,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     backgroundColor: '#f6f5f5',
   },
-  absoluteModal:{
+  absoluteModal: {
     height: HEIGHT,
     width: WIDTH,
     backgroundColor: '#000',
@@ -134,6 +135,10 @@ const styles = StyleSheet.create({
     height: 55,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  modalHeaderWrapper: {
+    marginTop: 55,
+    marginHorizontal: 20,
   },
 });
 export default styles;

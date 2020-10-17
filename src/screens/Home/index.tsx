@@ -1,8 +1,20 @@
 import React, {useRef, useState} from 'react';
-import {SafeAreaView, Text, View, Image, TouchableOpacity, Modal} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  PermissionsAndroid,
+  Alert,
+  Platform,
+} from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import Share from 'react-native-share';
 
+import RNFetchBlob, {FetchBlobResponse} from 'rn-fetch-blob/index';
+import CameraRoll from '@react-native-community/cameraroll';
 import styles from '~/screens/Home/styles';
 import Container from '~/components/common/Container';
 import Icon from '~/components/common/Icon';
@@ -11,33 +23,10 @@ import Touchable from '~/components/common/Touchable';
 import GalleriaList from '~/modules/Home/components/GalleryList';
 import {IImageType} from '~/modules/Home/types/ImageType';
 import Loader from '~/components/common/Loader';
-import {HEIGHT, WIDTH} from '~/utils';
+import {displayFlashMessage, HEIGHT, ITEM_ARRAY_OPTIONS, WIDTH} from '~/utils';
+import LoadingOverlay from '~/components/common/LoadingOverlay';
 
 const avatarImage = require('~/assets/images/bg-intro.jpg');
-
-const ARRAY_OPTIONS = [
-  {
-    id: 0,
-    name: 'Display in fullscreen',
-    icon: 'fullscreen',
-    type: 'material-community',
-    color: '#e92721',
-  },
-  {
-    id: 1,
-    name: 'Save to Gallery',
-    icon: 'download',
-    type: 'antdesign',
-    color: '#3d0664',
-  },
-  {
-    id: 2,
-    name: 'Share on Social s Media',
-    icon: 'share',
-    type: 'entypo',
-    color: '#ee7d5b',
-  },
-];
 
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -45,6 +34,7 @@ const HomeScreen = () => {
   const [zoomImages, setzoomImages] = useState<Array<any>>([]);
   const [zoomImageIndex, setzoomImageIndex] = useState<number>(0);
   const [selectedItem, setselectedItem] = useState<IImageType>();
+  const [processing, setProcessing] = useState<boolean>(false);
 
   const modalizPostMenuRef = useRef(null);
   const modalizZoom = useRef(null);
@@ -70,11 +60,118 @@ const HomeScreen = () => {
     setzoomImages(arrayImg);
   };
 
+  const handleShareActions = () => {
+    setProcessing(true);
+    modalizPostMenuRef.current?.close();
+    RNFetchBlob.config({
+      fileCache: true,
+      appendExt: 'png',
+    })
+      .fetch('GET', selectedItem?.url)
+      .then((response: FetchBlobResponse) => {
+        setProcessing(false);
+        // alert(resp.path());
+        console.log('File saved to ', response.path());
+        // if(Platform.OS=='ios'){
+        Share.open({
+          message: `Hi. Take a look at this picture of ${selectedItem?.author}`,
+          url: `file://${response.path()}`,
+          type: 'image/png',
+          title: 'Share Via',
+        });
+        // }
+        return response.readFile('base64');
+      })
+      .then((base64Data: any) => {
+        setProcessing(false);
+        displayFlashMessage('Sharing', 'Image shared successfully !', 'success');
+        // remove the file from storage
+        return base64Data;
+      })
+      .catch((err: any) => {
+        setProcessing(false);
+        displayFlashMessage('Sharing', 'Error while sharing the image !', 'danger');
+        console.log(err);
+      });
+  };
+
+  const handleDownload = async () => {
+    setProcessing(true);
+    if (Platform.OS === 'android') {
+      const granted = await getPermissionAndroid();
+      if (!granted) {
+        setProcessing(false);
+        return;
+      }
+    }
+
+    RNFetchBlob.config({
+      fileCache: true,
+      appendExt: 'png',
+    })
+      .fetch('GET', selectedItem?.url)
+      .then((response: FetchBlobResponse) => {
+        CameraRoll.saveToCameraRoll(response.data, 'photo')
+          .then((resp: string) => {
+            setProcessing(false);
+            displayFlashMessage('Downloading', 'Image downloaded successfully !', 'success');
+            console.log(resp);
+          })
+          .catch((err) => {
+            setProcessing(false);
+            console.log(err);
+          });
+      })
+      .catch((error: any) => {
+        setProcessing(false);
+        displayFlashMessage('Downloading', 'Error while Downloading the image !', 'danger');
+        console.log(error);
+      });
+  };
+
+  const getPermissionAndroid = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Image Download Permission',
+          message: 'Your permission is required to save images to your device',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      }
+      Alert.alert(
+        'Save remote Image',
+        'Grant Me Permission to save Image',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+    } catch (err) {
+      Alert.alert(
+        'Save remote Image',
+        `Failed to save Image: ${err.message}`,
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+      return false;
+    }
+    return true;
+  };
+
   const handleOptionSelected = (index: number) => {
     closeModalOption();
     switch (index) {
       case 0:
         displayZoomImageView();
+        break;
+      case 1:
+        handleDownload();
+        break;
+      case 2:
+        handleShareActions();
         break;
       default:
         break;
@@ -83,19 +180,18 @@ const HomeScreen = () => {
 
   const openModalOption = (item: IImageType) => {
     setselectedItem(item);
+    // @ts-ignore
     modalizPostMenuRef.current?.open();
   };
 
   const closeModalOption = () => {
+    // @ts-ignore
     modalizPostMenuRef.current?.close();
   };
 
   const renderModalZoom = () => {
     return (
-      <Modalize
-        ref={modalizZoom}
-        modalStyle={styles.absoluteModal}
-      >
+      <Modalize ref={modalizZoom} modalStyle={styles.absoluteModal}>
         <ImageViewer
           style={{width: WIDTH, height: HEIGHT}}
           imageUrls={zoomImages}
@@ -103,7 +199,7 @@ const HomeScreen = () => {
           enablePreload
           index={zoomImageIndex}
           renderHeader={() => (
-            <View style={{marginTop: 55, marginHorizontal: 20}}>
+            <View style={styles.modalHeaderWrapper}>
               <TouchableOpacity onPress={() => modalizZoom.current?.close()}>
                 <Icon name="close" type="antdesign" color={colors.darkgray} />
               </TouchableOpacity>
@@ -117,6 +213,7 @@ const HomeScreen = () => {
 
   return (
     <Container>
+      {processing ? <LoadingOverlay /> : null}
       <View>
         <SafeAreaView style={[styles.headerToolbar]}>
           <View style={styles.toolbarWrapper}>
@@ -148,12 +245,13 @@ const HomeScreen = () => {
           ref={modalizPostMenuRef}
         >
           <View style={[styles.modalWrapper, styles.wrapperPadding]}>
-            {ARRAY_OPTIONS.map((item, index) => (
+            {ITEM_ARRAY_OPTIONS.map((item, index) => (
               <TouchableOpacity
                 key={item.id}
                 style={styles.textStyleWrapper}
                 activeOpacity={0.6}
-                onPress={() => handleOptionSelected(index)}>
+                onPress={() => handleOptionSelected(index)}
+              >
                 <Icon name={item.icon} type={item.type} color={item.color} />
                 <Text style={styles.textStyleMenu}>{item.name}</Text>
               </TouchableOpacity>

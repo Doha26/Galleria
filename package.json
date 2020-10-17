@@ -9,6 +9,7 @@
     "android-shake": "adb shell input keyevent 82"
   },
   "dependencies": {
+    "@react-native-community/cameraroll": "^4.0.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/netinfo": "react-native-community/react-native-netinfo",
     "@react-navigation/native": "^5.7.6",
@@ -24,6 +25,7 @@
     "react-dom": "~16.9.0",
     "react-native": "~0.61.5",
     "react-native-fast-image": "^8.3.2",
+    "react-native-flash-message": "^0.1.16",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-image-pan-zoom": "^2.1.12",
     "react-native-image-zoom-viewer": "^3.0.1",
@@ -36,6 +38,7 @@
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.11.0",
+    "react-native-share": "^4.0.2",
     "react-native-status-bar-height": "^2.5.0",
     "react-native-unimodules": "^0.10.1",
     "react-native-vector-icons": "^7.1.0",
