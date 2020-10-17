@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: 'center',
     fontWeight: '900',
-    color: colors.white,
+    color: colors.darkBlue,
     marginLeft: 10,
   },
   headingText: {
@@ -63,6 +63,70 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginTop: 10,
     fontWeight: 'bold',
+  },
+  modalWrapper: {
+    paddingBottom: 20,
+    backgroundColor: colors.white,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+  centered: {
+    alignItems: 'center',
+  },
+  wrapperPadding: {
+    padding: 20,
+  },
+  modalSubTitleDesc: {
+    fontSize: 17,
+    textAlign: 'center',
+    paddingVertical: 5,
+    alignSelf: 'center',
+    color: colors.dark_gray,
+  },
+  modalButtonFull: {
+    height: 50,
+    marginTop: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    backgroundColor: colors.darkBlue,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: '500',
+  },
+  modalStyle: {
+    margin: 0,
+    justifyContent: 'flex-end',
+    backgroundColor: '#f6f5f5',
+  },
+  modalTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    padding: 15,
+    alignSelf: 'center',
+    color: colors.black,
+  },
+  modalSubTitle: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    textAlign: 'left',
+    padding: 16,
+    alignSelf: 'flex-start',
+    color: colors.black,
+  },
+  textStyleMenu: {
+    fontSize: 19,
+    color: colors.blackFilter70,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    paddingVertical: 20,
+  },
+  textStyleWrapper: {
+    flex: 1,
+    height: 55,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 export default styles;

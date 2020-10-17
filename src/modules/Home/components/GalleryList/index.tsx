@@ -13,9 +13,11 @@ import api from '~/services';
 const GalleryList = ({
   shouldRefresh,
   updateRefresh,
+  onItemClicked,
 }: {
   shouldRefresh: boolean;
   updateRefresh: () => void;
+  onItemClicked: (item: IImageType) => void;
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +52,7 @@ const GalleryList = ({
   };
 
   const handleItemPressed = (item: IImageType) => {
-    // Alert.alert('Item clicked');
+    onItemClicked(item);
   };
 
   function randomInteger() {
@@ -100,10 +102,12 @@ const GalleryList = ({
 GalleryList.propsTypes = {
   shouldRefresh: PropTypes.bool,
   updateRefresh: PropTypes.func,
+  onItemClicked: PropTypes.func,
 };
 GalleryList.defaultProps = {
   shouldRefresh: false,
   updateRefresh: () => null,
+  onItemClicked: () => null,
 };
 
 export default withNavigation(GalleryList);

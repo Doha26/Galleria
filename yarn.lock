@@ -9379,6 +9379,11 @@ react-native-material-color@^1.0.15:
   resolved "https://registry.yarnpkg.com/react-native-material-color/-/react-native-material-color-1.0.15.tgz#c90753a049087cae94d38c85bc7f4b2c62bacda0"
   integrity sha1-yQdToEkIfK6U04yFvH9LLGK6zaA=
 
+react-native-modalize@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.6.tgz#0a8662e77b1fb68d37baa6440cf64b0c0d718b71"
+  integrity sha512-/JE9ZRVL9AdjspXBpQnGk+BRiYHnKW77ptXLhudwETQRW5uPR/a80ph4BRkV7DVGwadlf04ASgq63lTpOtAtiw==
+
 react-native-reanimated@^1.13.1:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.1.tgz#c370c32cc4d447ae896cb029bb9c6a2f7608c5b4"

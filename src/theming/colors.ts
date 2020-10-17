@@ -21,6 +21,8 @@ const colors = {
   lightGrey: '#9A9A9A',
   darkGrey: '#282828',
   transparent: 'rgba(0,0,0,0)',
+  blackFilter70: `rgba(0, 0, 0, 0.8)`,
+  blackFilter90: `rgba(0, 0, 0, 0.3)`,
   pink: '#ec9999',
 };
 
