@@ -181,6 +181,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-photo-zoom')
+    implementation project(':react-native-photo-view')
+    implementation project(':react-native-fast-image')
     implementation project(':rn-fetch-blob')
     implementation project(':@react-native-community_netinfo')
     implementation project(':react-native-fetch-blob')

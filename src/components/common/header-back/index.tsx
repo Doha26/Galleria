@@ -3,6 +3,7 @@ import PropTypes, {string} from 'prop-types';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from '~/components/common/Icon';
 import Text from '~/components/common/Text/Text';
+import colors from '~/theming/colors';
 
 const propTypes = {
   onPress: PropTypes.func,
@@ -54,12 +55,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   titleStyle: {
-    color: Colors.white,
+    color: colors.white,
     fontSize: 21,
     fontWeight: 'bold',
   },
   subtitleStyle: {
-    color: Colors.white,
+    color: colors.white,
     fontSize: 17,
     fontWeight: '400',
   },

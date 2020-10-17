@@ -38,16 +38,14 @@ export default createBottomTabNavigator(
   {
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: '#3498db',
-      inactiveTintColor: 'black',
-      activeBackgroundColor: 'white',
-      inactiveBackgroundColor: 'white',
-      safeAreaInset: {bottom: 'never'},
+      activeBackgroundColor: colors.transparent,
+      inactiveBackgroundColor: colors.transparent,
       style: {
-        height: 100,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
         backgroundColor: colors.darkBlue,
+        paddingTop: 30,
+        height: 70,
       },
       tabStyle: {
         backgroundColor: colors.transparent,
