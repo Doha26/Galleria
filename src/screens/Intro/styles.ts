@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
     fontWeight: '900',
-    color: '#FFF',
+    color: colors.black,
   },
   subheading: {
     fontSize: 17,
