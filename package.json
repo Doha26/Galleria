@@ -14,6 +14,7 @@
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
     "axios": "^0.20.0",
+    "axios-cache-adapter": "^2.5.0",
     "crypto-js": "^3.1.9-1",
     "expo": "~37.0.3",
     "expo-asset": "~8.1.5",
