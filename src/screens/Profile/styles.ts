@@ -30,5 +30,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: 'bold',
   },
+  paddingBottom: {
+    paddingBottom: 30,
+  },
 });
 export default styles;

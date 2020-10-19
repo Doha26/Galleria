@@ -12,9 +12,9 @@ import {
 import {Modalize} from 'react-native-modalize';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import Share from 'react-native-share';
-
 import RNFetchBlob, {FetchBlobResponse} from 'rn-fetch-blob/index';
 import CameraRoll from '@react-native-community/cameraroll';
+
 import styles from '~/screens/Home/styles';
 import Container from '~/components/common/Container';
 import Icon from '~/components/common/Icon';
@@ -25,6 +25,7 @@ import {IImageType} from '~/modules/Home/types/ImageType';
 import Loader from '~/components/common/Loader';
 import {displayFlashMessage, HEIGHT, ITEM_ARRAY_OPTIONS, WIDTH} from '~/utils';
 import LoadingOverlay from '~/components/common/LoadingOverlay';
+import fr from '~/locales/fr.json';
 
 const avatarImage = require('~/assets/images/bg-intro.jpg');
 
@@ -63,36 +64,34 @@ const HomeScreen = () => {
   const handleShareActions = () => {
     setProcessing(true);
     modalizPostMenuRef.current?.close();
-    RNFetchBlob.config({
-      fileCache: true,
-      appendExt: 'png',
-    })
-      .fetch('GET', selectedItem?.url)
-      .then((response: FetchBlobResponse) => {
-        setProcessing(false);
-        // alert(resp.path());
-        console.log('File saved to ', response.path());
-        // if(Platform.OS=='ios'){
-        Share.open({
-          message: `Hi. Take a look at this picture of ${selectedItem?.author}`,
-          url: `file://${response.path()}`,
-          type: 'image/png',
-          title: 'Share Via',
+    if (selectedItem) {
+      RNFetchBlob.config({
+        fileCache: true,
+        appendExt: 'png',
+      })
+        .fetch('GET', selectedItem.url)
+        .then((response: FetchBlobResponse) => {
+          setProcessing(false);
+          console.log('File saved to ', response.path());
+          Share.open({
+            message: `${fr.home.shareMessage} ${selectedItem.author}`,
+            url: `file://${response.path()}`,
+            type: 'image/png',
+            title: 'Share Via',
+          });
+          return response.readFile('base64');
+        })
+        .then((base64Data: any) => {
+          setProcessing(false);
+          displayFlashMessage(fr.home.sharingTitle, fr.home.sharedSuccessfullyMessage, 'success');
+          return base64Data;
+        })
+        .catch((err: any) => {
+          setProcessing(false);
+          displayFlashMessage(fr.home.sharingTitle, fr.home.errorSharingMessage, 'danger');
+          console.log(err);
         });
-        // }
-        return response.readFile('base64');
-      })
-      .then((base64Data: any) => {
-        setProcessing(false);
-        displayFlashMessage('Sharing', 'Image shared successfully !', 'success');
-        // remove the file from storage
-        return base64Data;
-      })
-      .catch((err: any) => {
-        setProcessing(false);
-        displayFlashMessage('Sharing', 'Error while sharing the image !', 'danger');
-        console.log(err);
-      });
+    }
   };
 
   const handleDownload = async () => {
@@ -104,29 +103,35 @@ const HomeScreen = () => {
         return;
       }
     }
-
-    RNFetchBlob.config({
-      fileCache: true,
-      appendExt: 'png',
-    })
-      .fetch('GET', selectedItem?.url)
-      .then((response: FetchBlobResponse) => {
-        CameraRoll.saveToCameraRoll(response.data, 'photo')
-          .then((resp: string) => {
-            setProcessing(false);
-            displayFlashMessage('Downloading', 'Image downloaded successfully !', 'success');
-            console.log(resp);
-          })
-          .catch((err) => {
-            setProcessing(false);
-            console.log(err);
-          });
+    if (selectedItem) {
+      RNFetchBlob.config({
+        fileCache: true,
+        appendExt: 'png',
       })
-      .catch((error: any) => {
-        setProcessing(false);
-        displayFlashMessage('Downloading', 'Error while Downloading the image !', 'danger');
-        console.log(error);
-      });
+        .fetch('GET', selectedItem.url)
+        .then((response: FetchBlobResponse) => {
+          CameraRoll.save(response.data, {type: 'photo'})
+            .then((resp: string) => {
+              setProcessing(false);
+              displayFlashMessage(
+                fr.home.downloadingTitle,
+                fr.home.imageDownloadedSuccessfuly,
+                'success',
+              );
+              console.log(resp);
+            })
+            .catch((err: any) => {
+              setProcessing(false);
+              displayFlashMessage(fr.home.downloadingTitle, fr.home.errorDownloadingImage, 'danger');
+              console.log(err);
+            });
+        })
+        .catch((error: any) => {
+          setProcessing(false);
+          displayFlashMessage(fr.home.downloadingTitle, fr.home.errorDownloadingImage, 'danger');
+          console.log(error);
+        });
+    }
   };
 
   const getPermissionAndroid = async () => {
@@ -134,25 +139,25 @@ const HomeScreen = () => {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         {
-          title: 'Image Download Permission',
-          message: 'Your permission is required to save images to your device',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
+          title: fr.home.downloadPermissionTitle,
+          message: fr.home.donloadDescription,
+          buttonNegative: fr.home.buttonCancelText,
+          buttonPositive: fr.home.buttonOkText,
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         return true;
       }
       Alert.alert(
-        'Save remote Image',
-        'Grant Me Permission to save Image',
-        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        fr.home.saveImageText,
+        fr.home.grantPermissionText,
+        [{text: fr.home.buttonOkText, onPress: () => console.log('OK Pressed')}],
         {cancelable: false},
       );
     } catch (err) {
       Alert.alert(
-        'Save remote Image',
-        `Failed to save Image: ${err.message}`,
+        fr.home.saveImageText,
+        `${fr.home.failledToSaveImage} ${err.message}`,
         [{text: 'OK', onPress: () => console.log('OK Pressed')}],
         {cancelable: false},
       );

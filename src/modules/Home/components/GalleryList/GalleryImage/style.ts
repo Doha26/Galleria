@@ -1,5 +1,4 @@
-import {StyleSheet} from 'react-native';
-import Colors from '~/theming/colors';
+import {Platform, StyleSheet} from 'react-native';
 import {WIDTH} from '~/utils';
 import colors from '~/theming/colors';
 
@@ -23,6 +22,8 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: 'stretch',
+    borderRadius: Platform.OS === 'android' ? 16 : 0,
+    marginHorizontal: Platform.OS === 'android' ? 2 : 0,
   },
   detailsWraper: {
     position: 'absolute',
@@ -31,7 +32,12 @@ const styles = StyleSheet.create({
     left: 0,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    backgroundColor: Colors.lightgray,
+    backgroundColor: colors.lightgray,
+  },
+  fallBackWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default styles;

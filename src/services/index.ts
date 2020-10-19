@@ -7,6 +7,7 @@ const cache = setupCache({
   maxAge: 15 * 60 * 1000,
 });
 
+// Create the axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
   adapter: cache.adapter,

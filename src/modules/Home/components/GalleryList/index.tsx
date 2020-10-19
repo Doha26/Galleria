@@ -4,11 +4,12 @@ import Masonry from 'react-native-masonry-layout';
 import {View, ScrollView, Alert, NativeScrollEvent} from 'react-native';
 import PropTypes from 'prop-types';
 
-import GalleriaImageItem from '~/modules/Home/components/GalleryImage';
+import GalleriaImageItem from '~/modules/Home/components/GalleryList/GalleryImage';
 import Loader from '~/components/common/Loader';
 import {IImageType} from '~/modules/Home/types/ImageType';
 import {API_QUERY_TYPE} from '~/constants';
 import api from '~/services';
+import fr from '~/locales';
 
 const GalleryList = ({
   shouldRefresh,
@@ -25,11 +26,6 @@ const GalleryList = ({
   const dataList = useRef(null);
 
   useEffect(() => {
-    if (shouldRefresh) {
-      dataList.current?.clear();
-      setLoading(true);
-      loadData();
-    }
     loadData();
   });
 
@@ -38,8 +34,12 @@ const GalleryList = ({
     const {data, status} = await api.get(API_QUERY_TYPE.LIST);
 
     if (status !== 200) {
-      Alert.alert('Unable to fetch images');
+      Alert.alert(fr.home.unableToFetchText);
     } else if (data) {
+      if (shouldRefresh) {
+        dataList.current?.clear();
+        setLoading(true);
+      }
       const ImageList = data.map((item: IImageType) => {
         return {
           url: item.download_url,
@@ -83,6 +83,7 @@ const GalleryList = ({
             <Loader />
           ) : (
             <Masonry
+              removeClippedSubviews
               style={{flex: 1}}
               columns={2}
               ref={dataList}
