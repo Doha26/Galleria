@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   headerToolbar: {
-    height: isIphoneX() ? 150 : 120,
+    height: isIphoneX() ? 150 : 100,
     backgroundColor: '#f64a65',
   },
   toolbarWrapper: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     width: WIDTH,
     position: 'absolute',
     top: 0,
-    paddingTop: isIphoneX() ? 60 : 40,
+    paddingTop: isIphoneX() ? 60 : 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

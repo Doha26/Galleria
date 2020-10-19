@@ -1,0 +1,32 @@
+{
+  "intro": {
+    "mainTitle": "welcome",
+    "subtitle": "Let&apos;s browse some awesome images from around the worlds`"
+  },
+  "home":{
+    "shareMessage": "Hi. Take a look at this picture of",
+    "sharingTitle": "Sharing",
+    "sharedSuccessfulyMessage": "'Image shared successfully !",
+    "errorSharingMessage": "Error while sharing the image ",
+    "downloadingTitle": "Downloading",
+    "imageDownloadedSuccessfuly": "Image downloaded successfully !",
+    "errorDownloadingImage": "Error while Downloading the image !",
+    "downloadPermissionTitle": "Image Download Permission",
+    "donloadDescription": "Your permission is required to save images to your device",
+    "failledToSaveImage":"Failed to save Image:",
+    "buttonOkText":"Ok",
+    "buttonCancelText":"Cancel",
+    "saveImageText":"Save remote Image",
+    "grantPermissionText":"Grant Me Permission to save Image",
+    "unableToFetchText": "Unable to fetch images"
+  },
+  "favorite": {
+    "title": "Favorite"
+  },
+  "profile": {
+    "title": "Profile"
+  },
+  "setting": {
+    "title": "Setting"
+  }
+}

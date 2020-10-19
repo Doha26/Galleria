@@ -7,6 +7,7 @@ import BackgroundImage from '~/components/config/BackgroundImage';
 import Container from '~/components/common/Container';
 import Button from '~/components/common/Button';
 import colors from '~/theming/colors';
+import fr from '~/locales/fr.json';
 
 const slideBg = require('~/assets/images/bg-intro.jpg');
 
@@ -21,10 +22,10 @@ const IntroScreen = ({navigation: {navigate}}: {navigation: NavigationScreenProp
         <ScrollView contentContainerStyle={{flex: 1}}>
           <SafeAreaView style={styles.rootView}>
             <View />
-            <View style={{paddingBottom: 30}}>
-              <Text style={styles.headingText}>Welcome</Text>
+            <View style={styles.blocWrapper}>
+              <Text style={styles.headingText}>{fr.intro.mainTitle}</Text>
               <Text style={styles.subheading}>
-                Let&apos;s browse some awesome images from around the worlds`
+                {fr.intro.subtitle}
               </Text>
               <Button
                 text="Get started"

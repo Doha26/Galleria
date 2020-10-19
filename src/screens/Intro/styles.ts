@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
     fontWeight: '900',
-    color: colors.black,
+    color: colors.white,
   },
   subheading: {
     fontSize: 17,
@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginTop: 10,
     fontWeight: 'bold',
+  },
+  blocWrapper: {
+    paddingBottom: 30,
   },
 });
 export default styles;

@@ -1,15 +1,13 @@
 import React, {Suspense} from 'react';
 import {withNavigation} from 'react-navigation';
-import {View, Platform, ActivityIndicator, Image} from 'react-native';
+import {View, Platform, ActivityIndicator, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-
 import FastImage from 'react-native-fast-image';
-import {CachedImage} from '~/components/ImageCache';
+
 import Colors from '~/theming/colors';
 import {WIDTH} from '~/utils';
 import {IImageType} from '~/modules/Home/types/ImageType';
-import styles from '~/modules/Home/components/GalleryImage/style';
-import Touchable from '~/components/common/Touchable';
+import styles from '~/modules/Home/components/GalleryList/GalleryImage/style';
 
 const GalleryImageItem = ({
   imageItem,
@@ -18,6 +16,7 @@ const GalleryImageItem = ({
   imageItem: IImageType;
   onPress: (imageItem: IImageType) => void;
 }) => {
+  // Destructuring to access url and height
   const {url, height} = imageItem;
 
   // Handle onPress
@@ -26,17 +25,15 @@ const GalleryImageItem = ({
   };
 
   return (
-    <View style={[styles.container, {height}]}>
-      <Touchable onPress={() => handleOnPress(imageItem)} style={styles.imageWrapper}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={[styles.container, {height}]}
+      onPress={() => handleOnPress(imageItem)}
+    >
+      <View style={styles.imageWrapper}>
         <Suspense
           fallback={() => (
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
+            <View style={styles.fallBackWrapper}>
               <ActivityIndicator
                 color={Colors.red}
                 style={{marginVertical: Platform.OS === 'ios' ? 10 : 0}}
@@ -50,8 +47,8 @@ const GalleryImageItem = ({
             resizeMode="stretch"
           />
         </Suspense>
-      </Touchable>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 GalleryImageItem.propsTypes = {

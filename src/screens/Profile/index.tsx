@@ -1,17 +1,17 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 
-import {NavigationScreenProp} from 'react-navigation';
 import styles from '~/screens/Profile/styles';
 import Container from '~/components/common/Container';
+import fr from '~/locales/fr.json';
 
-const ProfileScreen = ({navigation: {navigate}}: {navigation: NavigationScreenProp<any>}) => {
+const ProfileScreen = () => {
   return (
     <Container withSafeArea withScroll>
       <View>
         <SafeAreaView style={styles.rootView}>
-          <View style={{paddingBottom: 30}}>
-            <Text style={styles.headingText}>Profile</Text>
+          <View style={styles.paddingBottom}>
+            <Text style={styles.headingText}>{fr.profile.title}</Text>
           </View>
         </SafeAreaView>
       </View>
