@@ -3,7 +3,6 @@ import {Text as RNText} from 'react-native';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  bold: PropTypes.bool,
   large: PropTypes.bool,
   small: PropTypes.bool,
   numberOfLines: PropTypes.number,
@@ -14,7 +13,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  bold: false,
   color: null,
   style: null,
   small: false,
@@ -26,7 +24,6 @@ const defaultProps = {
 };
 
 const Text = ({
-  bold,
   color,
   large,
   small,
@@ -37,7 +34,6 @@ const Text = ({
   extraLarge,
   ...props
 }: {
-  bold?: boolean;
   color?: string;
   large?: boolean;
   small?: boolean;

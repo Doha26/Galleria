@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
-
 import {padding} from '~/components/config/spacing';
 import ViewPropTypes from '../components/config/ViewPropTypes';
 

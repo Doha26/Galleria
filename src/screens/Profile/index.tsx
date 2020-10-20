@@ -1,6 +1,5 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
-
 import styles from '~/screens/Profile/styles';
 import Container from '~/components/common/Container';
 import fr from '~/locales/fr.json';

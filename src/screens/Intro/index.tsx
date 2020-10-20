@@ -1,6 +1,5 @@
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import React from 'react';
-
 import {NavigationScreenProp} from 'react-navigation';
 import styles from '~/screens/Intro/styles';
 import BackgroundImage from '~/components/config/BackgroundImage';
@@ -24,9 +23,7 @@ const IntroScreen = ({navigation: {navigate}}: {navigation: NavigationScreenProp
             <View />
             <View style={styles.blocWrapper}>
               <Text style={styles.headingText}>{fr.intro.mainTitle}</Text>
-              <Text style={styles.subheading}>
-                {fr.intro.subtitle}
-              </Text>
+              <Text style={styles.subheading}>{fr.intro.subtitle}</Text>
               <Button
                 text="Get started"
                 color={colors.pink}

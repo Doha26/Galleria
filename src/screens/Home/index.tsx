@@ -14,7 +14,6 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 import Share from 'react-native-share';
 import RNFetchBlob, {FetchBlobResponse} from 'rn-fetch-blob/index';
 import CameraRoll from '@react-native-community/cameraroll';
-
 import styles from '~/screens/Home/styles';
 import Container from '~/components/common/Container';
 import Icon from '~/components/common/Icon';
@@ -31,9 +30,8 @@ const avatarImage = require('~/assets/images/bg-intro.jpg');
 
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
-  const [modalZoomVisible, setmodalZoomVisible] = useState<boolean>(false);
-  const [zoomImages, setzoomImages] = useState<Array<any>>([]);
-  const [zoomImageIndex, setzoomImageIndex] = useState<number>(0);
+  const [zoomImages, setZoomImages] = useState<Array<any>>([]);
+  const [zoomImageIndex, setZoomImageIndex] = useState<number>(0);
   const [selectedItem, setselectedItem] = useState<IImageType>();
   const [processing, setProcessing] = useState<boolean>(false);
 
@@ -50,15 +48,15 @@ const HomeScreen = () => {
 
   const displayZoomImageView = () => {
     const arrayImg = [];
-    setzoomImages([]);
+    setZoomImages([]);
     const imageToDisplay = {
       url: selectedItem?.url,
       freeHeight: true,
     };
     arrayImg.push(imageToDisplay);
-    setmodalZoomVisible(true);
     modalizZoom.current?.open();
-    setzoomImages(arrayImg);
+    setZoomImages(arrayImg);
+    setZoomImageIndex(0);
   };
 
   const handleShareActions = () => {
@@ -122,7 +120,11 @@ const HomeScreen = () => {
             })
             .catch((err: any) => {
               setProcessing(false);
-              displayFlashMessage(fr.home.downloadingTitle, fr.home.errorDownloadingImage, 'danger');
+              displayFlashMessage(
+                fr.home.downloadingTitle,
+                fr.home.errorDownloadingImage,
+                'danger',
+              );
               console.log(err);
             });
         })
@@ -247,16 +249,14 @@ const HomeScreen = () => {
           adjustToContentHeight
           modalStyle={styles.modalStyle}
           withReactModal
-          ref={modalizPostMenuRef}
-        >
+          ref={modalizPostMenuRef}>
           <View style={[styles.modalWrapper, styles.wrapperPadding]}>
             {ITEM_ARRAY_OPTIONS.map((item, index) => (
               <TouchableOpacity
                 key={item.id}
                 style={styles.textStyleWrapper}
                 activeOpacity={0.6}
-                onPress={() => handleOptionSelected(index)}
-              >
+                onPress={() => handleOptionSelected(index)}>
                 <Icon name={item.icon} type={item.type} color={item.color} />
                 <Text style={styles.textStyleMenu}>{item.name}</Text>
               </TouchableOpacity>

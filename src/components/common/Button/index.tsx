@@ -7,7 +7,6 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
 import Text from '../Text/Text';
 import colors from '~/theming/colors';
 import styles from '~/components/common/Button/styles';
@@ -57,7 +56,7 @@ const Button = ({
   if (loading) {
     buttonContent = (
       <ActivityIndicator
-        color={Color.white}
+        color={colors.white}
         style={{marginVertical: Platform.OS === 'ios' ? 10 : 0}}
         size={Platform.OS === 'ios' ? 1 : 24}
       />
@@ -65,10 +64,8 @@ const Button = ({
   } else {
     buttonContent = (
       <Text
-        bold
         color={tintColor}
-        style={{textAlign: 'center', color: tintColor, fontSize, fontWeight: 'bold'}}
-      >
+        style={{textAlign: 'center', color: tintColor, fontSize, fontWeight: 'bold'}}>
         {text}
       </Text>
     );
