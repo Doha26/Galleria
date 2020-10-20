@@ -6,7 +6,7 @@
   "home":{
     "shareMessage": "Hi. Take a look at this picture of",
     "sharingTitle": "Sharing",
-    "sharedSuccessfulyMessage": "Image shared successfully !",
+    "sharedSuccessfulyMessage": "Action done successfully !",
     "errorSharingMessage": "Error while sharing the image ",
     "downloadingTitle": "Downloading",
     "imageDownloadedSuccessfuly": "Image downloaded successfully !",
