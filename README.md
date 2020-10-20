@@ -19,7 +19,7 @@
 - [x] Cache for Request
 - [x] Expo setup with Bare-workflow
 - [x] Working on iPhone and Android Devices (Tested)
-- [x] Fixed known bug for images display in iOS 14. bug reference [here]()
+- [x] Fixed known bug for images display in iOS 14. bug reference [here](https://github.com/facebook/react-native/issues/29279)
 - [x] Documentation
 - [x] Implemented some Units and snapshot tests to ensure that app behave as expected (Work In Progress)
 
