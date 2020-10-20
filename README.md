@@ -25,7 +25,7 @@
 
 
 ##  Preview
-![App-demo](./app/src/demo/demo1.png)
+![App-demo](./src/demo/demo1.png)
 
 ### Used
 
