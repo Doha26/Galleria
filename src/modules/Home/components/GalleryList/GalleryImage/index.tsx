@@ -3,7 +3,6 @@ import {withNavigation} from 'react-navigation';
 import {View, Platform, ActivityIndicator, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import FastImage from 'react-native-fast-image';
-
 import Colors from '~/theming/colors';
 import {WIDTH} from '~/utils';
 import {IImageType} from '~/modules/Home/types/ImageType';
@@ -28,8 +27,7 @@ const GalleryImageItem = ({
     <TouchableOpacity
       activeOpacity={0.7}
       style={[styles.container, {height}]}
-      onPress={() => handleOnPress(imageItem)}
-    >
+      onPress={() => handleOnPress(imageItem)}>
       <View style={styles.imageWrapper}>
         <Suspense
           fallback={() => (
@@ -58,6 +56,7 @@ GalleryImageItem.propsTypes = {
     width: PropTypes.string,
     height: PropTypes.number,
     url: PropTypes.string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     download_url: PropTypes.string,
   }),
   onPress: PropTypes.func,

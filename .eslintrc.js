@@ -15,6 +15,7 @@ module.exports = {
   env: {
     es6: true,
     node: true,
+    jest: true,
   },
   settings: {
     'import/resolver': {
@@ -63,15 +64,16 @@ module.exports = {
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/interface-name-prefix': ['error', {prefixWithI: 'always'}],
     'react/jsx-filename-extension': [1, {extensions: ['.tsx', '.ts']}],
+    'react/jsx-closing-bracket-location': 'off',
     // TODO - enable this
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
     'react/no-unused-state': 'off',
-
     '@typescript-eslint/naming-convention': [
       'error',
       {

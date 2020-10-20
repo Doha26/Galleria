@@ -71,3 +71,8 @@ android/*.hprof
 huhschool.jks
 /android/app/release/
 /android/app/staging/
+
+# Jest
+#
+.jest/
+coverage/

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container Component should render without issues 1`] = `
+<Component
+  onScroll={[Function]}
+  scrollEventThrottle={1}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+/>
+`;

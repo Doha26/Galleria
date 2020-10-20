@@ -26,8 +26,7 @@ const renderContent = (
           <ScrollView
             scrollEventThrottle={1}
             onScroll={({nativeEvent}) => (onScroll ? onScroll(nativeEvent.contentOffset.y) : null)}
-            style={{flex: 1}}
-          >
+            style={{flex: 1}}>
             {children}
           </ScrollView>
         </SafeAreaView>
@@ -37,8 +36,7 @@ const renderContent = (
       <ScrollView
         scrollEventThrottle={1}
         onScroll={({nativeEvent}) => (onScroll ? onScroll(nativeEvent.contentOffset.y) : null)}
-        style={{flex: 1}}
-      >
+        style={{flex: 1}}>
         {children}
       </ScrollView>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CachedImage} from '~/components/ImageCache';
+import {Image} from 'react-native';
 
 const propTypes = {
   style: PropTypes.shape({}),
@@ -28,7 +28,7 @@ const LazyImage = ({
   height: number;
 }) => {
   return (
-    <CachedImage
+    <Image
       style={style}
       source={{
         uri: image,

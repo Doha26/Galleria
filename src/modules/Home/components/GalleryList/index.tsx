@@ -3,13 +3,12 @@ import {withNavigation} from 'react-navigation';
 import Masonry from 'react-native-masonry-layout';
 import {View, ScrollView, Alert, NativeScrollEvent} from 'react-native';
 import PropTypes from 'prop-types';
-
 import GalleriaImageItem from '~/modules/Home/components/GalleryList/GalleryImage';
 import Loader from '~/components/common/Loader';
 import {IImageType} from '~/modules/Home/types/ImageType';
 import {API_QUERY_TYPE} from '~/constants';
 import api from '~/services';
-import fr from '~/locales';
+import fr from '~/locales/fr.json';
 
 const GalleryList = ({
   shouldRefresh,
