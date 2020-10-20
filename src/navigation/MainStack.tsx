@@ -41,15 +41,16 @@ export default createBottomTabNavigator(
       activeBackgroundColor: colors.transparent,
       inactiveBackgroundColor: colors.transparent,
       style: {
+        position: 'absolute',
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        backgroundColor: colors.darkBlue,
+        backgroundColor: colors.blackBlue,
         paddingTop: 30,
         height: isIphoneX() ? 70 : 80,
       },
       tabStyle: {
         backgroundColor: colors.transparent,
-        marginBottom: !isIphoneX() ? 20 : 0,
+        marginBottom: !isIphoneX() ? 15 : 0,
       },
     },
     initialRouteName: 'Home',

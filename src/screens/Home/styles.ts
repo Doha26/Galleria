@@ -15,37 +15,34 @@ const styles = StyleSheet.create({
   },
   headerToolbar: {
     height: isIphoneX() ? 150 : 100,
-    backgroundColor: '#f64a65',
   },
   toolbarWrapper: {
-    backgroundColor: '#f64a65',
+    backgroundColor: '#ffffff',
     width: WIDTH,
     position: 'absolute',
     top: 0,
-    paddingTop: isIphoneX() ? 60 : 20,
+    paddingTop: isIphoneX() ? 40 : 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
   },
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 120,
+    height: 120,
   },
   avatarWrapper: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
   },
   avatarName: {
     fontSize: 28,
-    textAlign: 'center',
     fontWeight: '900',
     color: colors.darkBlue,
-    marginLeft: 10,
+    marginLeft: -20,
   },
   headingText: {
     fontSize: 43,
@@ -77,24 +74,7 @@ const styles = StyleSheet.create({
   wrapperPadding: {
     padding: 20,
   },
-  modalSubTitleDesc: {
-    fontSize: 17,
-    textAlign: 'center',
-    paddingVertical: 5,
-    alignSelf: 'center',
-    color: colors.dark_gray,
-  },
-  modalButtonFull: {
-    height: 50,
-    marginTop: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    backgroundColor: colors.darkBlue,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontWeight: '500',
-  },
+
   modalStyle: {
     margin: 0,
     justifyContent: 'flex-end',

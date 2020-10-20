@@ -10,7 +10,7 @@ export default createAppContainer(
       [rootSwitch.main]: MainStack,
     },
     {
-      initialRouteName: rootSwitch.main,
+      initialRouteName: rootSwitch.intro,
     },
   ),
 );

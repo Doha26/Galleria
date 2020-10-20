@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {withNavigation} from 'react-navigation';
+// @ts-ignore
 import Masonry from 'react-native-masonry-layout';
 import {View, ScrollView, Alert, NativeScrollEvent} from 'react-native';
 import PropTypes from 'prop-types';
@@ -36,6 +37,7 @@ const GalleryList = ({
       Alert.alert(fr.home.unableToFetchText);
     } else if (data) {
       if (shouldRefresh) {
+        // @ts-ignore
         dataList.current?.clear();
         setLoading(true);
       }
@@ -46,6 +48,7 @@ const GalleryList = ({
           author: item.author,
         };
       });
+      // @ts-ignore
       dataList.current?.addItems(ImageList);
       updateRefresh();
     }
