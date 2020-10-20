@@ -5,7 +5,7 @@
 
 # Galleria
 
->A React Native mobile application that display infinite scroll of images with fast loading,  
+>A React Native mobile application that display infinite scroll of images with fast image loading  
 > and caching mechanism.   
 > Since this app behave like a Gallery image app, I decided to call it `Galleria`.
  
