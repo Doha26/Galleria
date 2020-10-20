@@ -1,6 +1,6 @@
  {
    "compilerOptions": {
-     "types": ["node"],
+     "types": ["node","jest"],
      "allowSyntheticDefaultImports": true,
      "jsx": "react-native",
      "lib": [
@@ -35,7 +35,11 @@
        "~/*": ["./src/*"]
      }
    },
-   "include": ["./src/**/*.ts", "./src/**/*.tsx",",./src/typings/**/*/.d.ts"],
+   "include": ["./src/**/*.ts", "./src/**/*.tsx",",./src/typings/**/*/.d.ts",
+     "./tests/**/*.js","./__tests__/**/*.js","./__tests__/**/*.tsx",
+     "./src/__mocks__/**/*.ts",
+     "./src/__mocks__/**/*.tsx"
+   ],
    "exclude": ["node_modules", "build", "dist", "src/**/*.js", "src/**/*.jsx"]
  }
 

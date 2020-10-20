@@ -1,6 +1,5 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-
 import {isIphoneX} from 'react-native-iphone-x-helper';
 import HomeScreen from '~/screens/Home';
 import FavoriteScreen from '~/screens/Favorite';
