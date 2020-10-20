@@ -181,6 +181,12 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_cameraroll')
+    implementation project(':react-native-fast-image')
+    implementation project(':rn-fetch-blob')
+    implementation project(':@react-native-community_netinfo')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     addUnimodulesDependencies()

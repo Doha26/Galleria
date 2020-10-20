@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Component should render without issues 1`] = `
+<Component
+  numberOfLines={2}
+  style={
+    Array [
+      Array [
+        Object {
+          "color": null,
+          "fontSize": 18,
+        },
+      ],
+      null,
+    ]
+  }
+/>
+`;

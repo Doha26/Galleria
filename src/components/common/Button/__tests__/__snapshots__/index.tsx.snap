@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component should render without issues 1`] = `
+<Component
+  activeOpacity={0.7}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderRadius": 30,
+        "height": 60,
+        "justifyContent": "center",
+        "marginHorizontal": 8,
+        "marginVertical": 2,
+        "paddingHorizontal": 20,
+      },
+      Object {
+        "backgroundColor": "#050405",
+      },
+    ]
+  }
+>
+  <Component>
+    <Text
+      color="#050405"
+      extraLarge={false}
+      large={false}
+      numberOfLines={2}
+      small={false}
+      style={
+        Object {
+          "color": "#050405",
+          "fontSize": 22,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+      theme={null}
+    >
+      Test Button
+    </Text>
+  </Component>
+</Component>
+`;
