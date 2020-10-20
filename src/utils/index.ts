@@ -20,7 +20,7 @@ export const ITEM_ARRAY_OPTIONS = [
   },
   {
     id: 2,
-    name: 'Share on Social s Media',
+    name: 'Share on Socials Media',
     icon: 'share',
     type: 'entypo',
     color: '#ee7d5b',

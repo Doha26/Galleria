@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import ImageViewer from 'react-native-image-zoom-viewer';
+// @ts-ignore
 import Share from 'react-native-share';
 import RNFetchBlob, {FetchBlobResponse} from 'rn-fetch-blob/index';
 import CameraRoll from '@react-native-community/cameraroll';
@@ -26,7 +27,7 @@ import {displayFlashMessage, HEIGHT, ITEM_ARRAY_OPTIONS, WIDTH} from '~/utils';
 import LoadingOverlay from '~/components/common/LoadingOverlay';
 import fr from '~/locales/fr.json';
 
-const avatarImage = require('~/assets/images/bg-intro.jpg');
+const logoImage = require('~/assets/images/logo-alpha.png');
 
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -54,6 +55,7 @@ const HomeScreen = () => {
       freeHeight: true,
     };
     arrayImg.push(imageToDisplay);
+    // @ts-ignore
     modalizZoom.current?.open();
     setZoomImages(arrayImg);
     setZoomImageIndex(0);
@@ -61,6 +63,7 @@ const HomeScreen = () => {
 
   const handleShareActions = () => {
     setProcessing(true);
+    // @ts-ignore
     modalizPostMenuRef.current?.close();
     if (selectedItem) {
       RNFetchBlob.config({
@@ -76,12 +79,26 @@ const HomeScreen = () => {
             url: `file://${response.path()}`,
             type: 'image/png',
             title: 'Share Via',
-          });
+          })
+            .then((response: any) => {
+              console.log(response);
+              setProcessing(false);
+              displayFlashMessage(
+                fr.home.sharingTitle,
+                fr.home.sharedSuccessfulyMessage,
+                'success',
+              );
+            })
+            .catch((err: any) => {
+              setProcessing(false);
+              console.log(err);
+              displayFlashMessage(fr.home.sharingTitle, fr.home.errorSharingMessage, 'danger');
+            });
           return response.readFile('base64');
         })
         .then((base64Data: any) => {
           setProcessing(false);
-          displayFlashMessage(fr.home.sharingTitle, fr.home.sharedSuccessfullyMessage, 'success');
+          // displayFlashMessage(fr.home.sharingTitle, fr.home.sharedSuccessfulyMessage, 'success');
           return base64Data;
         })
         .catch((err: any) => {
@@ -224,17 +241,18 @@ const HomeScreen = () => {
       <View>
         <SafeAreaView style={[styles.headerToolbar]}>
           <View style={styles.toolbarWrapper}>
+            <View />
             <View style={styles.avatarWrapper}>
               <Touchable>
-                <Image source={avatarImage} style={styles.avatar} />
+                <Image source={logoImage} style={styles.avatar} />
               </Touchable>
               <Text style={styles.avatarName}>Galleria</Text>
             </View>
             <Icon
               name="refresh"
               type="material-community"
-              color={colors.white}
-              size={35}
+              color={colors.darkBlue}
+              size={28}
               clickable
               onPress={handleRefreshClicked}
             />

@@ -1,12 +1,12 @@
 {
   "intro": {
     "mainTitle": "welcome",
-    "subtitle": "Let&apos;s browse some awesome images from around the worlds`"
+    "subtitle": "Let's browse some awesome images from around the worlds"
   },
   "home":{
     "shareMessage": "Hi. Take a look at this picture of",
     "sharingTitle": "Sharing",
-    "sharedSuccessfulyMessage": "'Image shared successfully !",
+    "sharedSuccessfulyMessage": "Image shared successfully !",
     "errorSharingMessage": "Error while sharing the image ",
     "downloadingTitle": "Downloading",
     "imageDownloadedSuccessfuly": "Image downloaded successfully !",

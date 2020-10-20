@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
   },
   blocWrapper: {
     paddingBottom: 30,
+    marginHorizontal: 20,
+  },
+  logoImage: {
+    height: 150,
+    width: 150,
+    alignSelf: 'center',
   },
 });
 export default styles;
