@@ -8,7 +8,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "postinstall": "npx jetifier && npx react-native-fix-image",
+    "postinstall": "npx jetifier && npx react-native-fix-image && grep -rl \"s.dependency 'React/Core'\" node_modules/ | xargs sed -i '' 's=React/Core=React-Core=g'",
     "android-shake": "adb shell input keyevent 82",
     "test": "jest --updateSnapshot --no-cache",
     "lint": "eslint src --ext .js,.ts,.tsx --no-ignore --max-warnings=0 && yarn ts:check"
