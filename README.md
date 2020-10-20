@@ -24,9 +24,11 @@
 - [x] Implemented some Units and snapshot tests to ensure that app behave as expected (Work In Progress)
 
 
-##  Preview
+##  Preview #1
 ![App-demo](./src/demo/demo1.png)
 
+##  Preview #2
+![App-demo](./src/demo/demo2.png)
 ### Used
 
  - [React Native (with Hooks)](https://reactnative.dev/)

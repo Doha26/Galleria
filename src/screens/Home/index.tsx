@@ -246,7 +246,7 @@ const HomeScreen = () => {
               <Touchable>
                 <Image source={logoImage} style={styles.avatar} />
               </Touchable>
-              <Text style={styles.avatarName}>Galleria</Text>
+              <Text style={styles.avatarName}>alleria</Text>
             </View>
             <Icon
               name="refresh"

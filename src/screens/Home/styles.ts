@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '900',
     color: colors.darkBlue,
-    marginLeft: -20,
+    marginLeft: -25,
   },
   headingText: {
     fontSize: 43,

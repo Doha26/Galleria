@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     backgroundColor: colors.lightgray,
-    marginHorizontal: 2,
+    marginHorizontal: 5,
     position: 'relative',
   },
   image: {
